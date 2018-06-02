@@ -1,7 +1,7 @@
-######################################################
-# Removes the "/public" from the end of the site url #
-# but keeps the same functionality                   #
-######################################################
+############################################################################
+###          Removes the "/public" from the end of the site url          ###
+###          but keeps the same functionality                            ###
+############################################################################
 <IfModule mod_rewrite.c>
     
     # Turns on the url rewrite engine

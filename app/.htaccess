@@ -1,6 +1,6 @@
-##########################################################
-# Forbids browser access to app folder and its subfolder #
-##########################################################
+###############################################################################
+####        Forbids browser access to app folder and its subfolder         ####
+###############################################################################
 
 # Access Forbidden 403 to app and subfolders
 Options -Indexes 

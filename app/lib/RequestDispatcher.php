@@ -7,21 +7,22 @@
  * 
  */
 
-// define("DEFAULT_CONTROLLER", "PagesController");
-// define("DEFAULT_ACTION", "index");
-// define("DEFAULT_PARAMS", []);
 
 class RequestDispatcher 
 {    
-    // protected $currentController = "PagesController";
-    // protected $currentAction = "index";
-    // protected $params = [];
- 
     public function __construct() 
     {
-        // Test_URL: /testController/testAction/param1/param2
-
         $url = $this->getUrl();
+
+        // loads the default values if the url is not defined
+        if ($url === '') {
+            require_once APP_ROOT . "/controllers/". DEFAULT_CONTROLLER .".php";
+            $controller = DEFAULT_CONTROLLER;
+            $action = DEFAULT_ACTION;
+            $params = DEFAULT_PARAMS;
+            call_user_func_array([new $controller(), $action], $params);
+            return;
+        }
 
         $exploded = explode("/", $url);
 
@@ -63,20 +64,18 @@ class RequestDispatcher
             $params = DEFAULT_PARAMS;
         }
 
-
-        // echo "<br><br><hr>Controller: $controller; Action: $action;<hr>"; #DEBUG
-
-        // Calls the method (method_name = $action) of the object instantiate as
-        // (object_instance = $controllerObj) with the params (array_of_params = $params)
         call_user_func_array([$controllerObj, $action], $params);
     }
 
     private function getUrl() 
     {
-        $url = isset($_GET['url']) ? $_GET['url'] : "";
-        $url = filter_var($url, FILTER_SANITIZE_URL);
+        if (!isset($_GET['url'])) {
+            return "";
+        }
+
+        $url = filter_var($_GET['url'], FILTER_SANITIZE_URL);
         $url = trim($url, "/");
-        $url = trim($url);
+
         return $url;
     }
 
