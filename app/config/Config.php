@@ -1,6 +1,6 @@
 <?php
 /**
- * This file will keep all the constants of the application
+ * This file will keep all the public constants of the application
  */
 
 // APP_ROOT

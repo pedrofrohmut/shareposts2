@@ -10,6 +10,9 @@ class Controller
 
     }
 
+    /**
+     * Returns a new instance of a model for a given name if it exists
+     */
     public function loadModel($modelPath)
     {
         $modelPath = APP_ROOT . "/models/$modelPath.php";
@@ -26,6 +29,10 @@ class Controller
 
     }
 
+    /**
+     * Loads the content of the layout with a view from the given path 
+     * with the data as a context
+     */
     public function loadView($viewPath, $data)
     {
         $viewPath = APP_ROOT . "/views/$viewPath.php";
