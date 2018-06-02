@@ -4,7 +4,9 @@ Learn PHP and MVC Design Pattern.
 
 In  my version I am doing PHP in the Java Servlet/JSP way (that i know better).
 
-This project uses the same tools of the TraversyMVC as: .htaccess and basic folder structure. BUT it changes: 
+This project uses the same tools of the TraversyMVC framework as: .htaccess files and basic folder structure. 
+
+BUT it changes: 
 1. The core libraries
 2. Added dynamic configurations that automatically changes base on the environment 
 3. The logic was moved from the controllers to services

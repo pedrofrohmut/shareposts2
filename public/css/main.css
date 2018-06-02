@@ -1,0 +1,31 @@
+/*
+    
+    Main Style File of the application. Here you will put the global styles of the App
+
+    Tip: use Ctrl + F5 (reload + clear cache)
+    
+*/
+
+:root {
+    /* font-size: 20px !important;
+    line-height: 1.2 !important;
+    font-family: 'Times New Roman', Times, serif !important; */
+}
+
+@media(max-width:992px) {
+    :root {
+        
+    }
+}
+
+@media(max-width:768px) {
+    :root {
+        
+    }
+}
+
+@media(max-width:480px) {
+    :root {
+        
+    }
+}

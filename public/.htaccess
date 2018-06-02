@@ -1,0 +1,26 @@
+####################################################################################
+# Redirects every request url to index.php unless there is a file in public folder #
+####################################################################################
+<IfModule mod_rewrite.c>
+    
+    # Disable multiple choice of url
+    Options -Multiviews
+    
+    # Turns on the url rewrite engine
+    RewriteEngine On 
+    
+    # Your root url not including the host url
+    RewriteBase /shareposts2/public
+
+    # if file not found continue to rewrite rule
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+
+    RewriteRule ^(.+)$ main.php?url=$1 [QSA,L]
+
+</IfModule>
+
+############################
+# Defines the default page #
+############################
+DirectoryIndex main.php

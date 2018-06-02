@@ -1,0 +1,8 @@
+#div404 {
+    width: 400px;
+    margin: 0 auto;
+}
+#div404 * {
+    width: 100%;
+    text-align: center;
+}
