@@ -1,5 +1,5 @@
 # shareposts2
-TESTANDO: This is my version of SharePosts that I am making for myself just to
+This is my version of SharePosts that I am making for myself just to
 Learn PHP and MVC Design Pattern.
 
 In  my version I am doing PHP in the Java Servlet/JSP way (that i know better).
