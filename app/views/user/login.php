@@ -16,7 +16,7 @@
             <!-- Password -->
             <div class="form-group my-4">
                 <label class="required sr-only">Password</label>
-                <input type="text" name="password" class="form-control <?=isInvalid($data['passwordErr'])?>" value="<?=$data['password']?>" placeholder="Password (required)">
+                <input type="password" name="password" class="form-control <?=isInvalid($data['passwordErr'])?>" value="<?=$data['password']?>" placeholder="Password (required)">
                 <div class="invalid-feedback"><?=$data['passwordErr']?></div>
             </div>
 

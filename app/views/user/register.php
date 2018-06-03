@@ -23,14 +23,14 @@
             <!-- Password -->
             <div class="form-group my-4">
                 <label class="required sr-only">Password</label>
-                <input type="text" name="password" class="form-control <?=isInvalid($data['passwordErr'])?>" value="<?=$data['password']?>" placeholder="Password (required)">
+                <input type="password" name="password" class="form-control <?=isInvalid($data['passwordErr'])?>" value="<?=$data['password']?>" placeholder="Password (required)">
                 <div class="invalid-feedback"><?=$data['passwordErr']?></div>
             </div>
 
             <!-- Confirm Password -->
             <div class="form-group my-4">
                 <label class="required sr-only">Confirm Password</label>
-                <input type="text" name="confirmPassword" class="form-control <?=isInvalid($data['confirmPasswordErr'])?>" value="<?=$data['confirmPassword']?>" placeholder="Confirm Password (required)">
+                <input type="password" name="confirmPassword" class="form-control <?=isInvalid($data['confirmPasswordErr'])?>" value="<?=$data['confirmPassword']?>" placeholder="Confirm Password (required)">
                 <div class="invalid-feedback"><?=$data['confirmPasswordErr']?></div>
             </div>
 

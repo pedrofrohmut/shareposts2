@@ -1,4 +1,7 @@
 <?php
+require_once APP_ROOT . "/services/UserService.php";
+require_once APP_ROOT . "/services/ServiceResponse.php";
+
 class UserController extends Controller 
 {
     public function __construct()
@@ -26,34 +29,16 @@ class UserController extends Controller
      */
     public function login()
     {
-        // $data = [];
-
-        // $this->loadView("user/login", $data);
         switch ($_SERVER['REQUEST_METHOD'])
         {
             case 'GET': # Load the form
-                
-                $data = [
-                    "email"             => "",
-                    "password"          => "",
-                    "emailErr"          => "",
-                    "passwordErr"       => ""
-                ];
-
-                $this->loadView("user/login", $data);
-
+                $serviceResponse = ( new UserService() )->loginOnGet();
+                $this->loadView($serviceResponse->getViewPath(), $serviceResponse->getData());
                 break;
-
             case 'POST': # Submit the form
-                
-                // $service = new UserService();
-                // $serviceResponse = $service->registerOnPost();
-                // $this->loadView($serviceResponse->viewPath, $serviceResponse->data);
-
-                $this->loadView("user/login", []);
-
+                $serviceResponse = ( new UserService )->loginOnPost();
+                $this->loadView($serviceResponse->getViewPath(), $serviceResponse->getData());
                 break;
-
             default:
                 $this->methodNotAllowed();
         }
@@ -68,32 +53,13 @@ class UserController extends Controller
         switch ($_SERVER['REQUEST_METHOD'])
         {
             case 'GET': # Load the form
-                
-                $data = [
-                    "name"              => "",
-                    "email"             => "",
-                    "password"          => "",
-                    "confirmPassword"   => "",
-                    "nameErr"           => "",
-                    "emailErr"          => "",
-                    "passwordErr"       => "",
-                    "confirmPasswodErr" => ""
-                ];
-
-                $this->loadView("user/register", $data);
-
+                $serviceResponse = ( new UserService() )->registerOnGet();
+                $this->loadView($serviceResponse->getViewPath(), $serviceResponse->getData());
                 break;
-
             case 'POST': # Submit the form
-                
-                // $service = new UserService();
-                // $serviceResponse = $service->registerOnPost();
-                // $this->loadView($serviceResponse->viewPath, $serviceResponse->data);
-
-                $this->loadView("user/register", []);
-
+                $serviceResponse = ( new UserService )->registerOnPost();
+                $this->loadView($serviceResponse->getViewPath(), $serviceResponse->getData());
                 break;
-
             default:
                 $this->methodNotAllowed();
         }
