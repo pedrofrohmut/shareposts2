@@ -11,7 +11,7 @@
 <!-- CSS: Font Awesome -->
 <link rel="stylesheet" href="<?=URL_ROOT?>/font-awesome-4.7.0/css/font-awesome.min.css">
 
-<!-- CSS: Bootstrap 3.3.7 -->
+<!-- CSS: Bootstrap 4.0 -->
 <link rel="stylesheet" href="<?=URL_ROOT?>/css/bootstrap.min.css">
 
 <!-- Custom CSS -->

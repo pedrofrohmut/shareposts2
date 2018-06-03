@@ -1,6 +1,6 @@
 <?php
 /**
- * Substituir esse arquivo futuramente
+ * Substituir esse arquivo futuramente | Classe de teste
  */
 
 // try {

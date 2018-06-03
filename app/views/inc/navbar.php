@@ -1,34 +1,42 @@
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
 
-  <div class="container">
+    <div class="container">
+        <a class="navbar-brand" href="<?=URL_ROOT?>">SharePosts</a>
 
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="<?=URL_ROOT?>">SharePosts</a>
-        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
 
-        <div class="collapse navbar-collapse" id="main-nav">
-            <ul class="nav navbar-nav">
-                <li><a href="<?=URL_ROOT?>">Index</a></li>
-                <li><a href="<?=URL_ROOT?>/page/about">About</a></li>
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+
+            <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item">
+                <a class="nav-link" href="<?=URL_ROOT?>">Home</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="<?=URL_ROOT?>/page/about">About</a>
+            </li>         
+            
             </ul>
 
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="<?=URL_ROOT?>/user/register">
+            <ul class="navbar-nav navbar-right">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="<?=URL_ROOT?>/user/register">
                         <i class="fa fa-user-plus"></i> Register
                     </a>
                 </li>
-                <li>
-                    <a href="<?=URL_ROOT?>/user/login">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="<?=URL_ROOT?>/user/login">
                         <i class="fa fa-sign-in" aria-hidden="true"></i> Login
                     </a>
-                </li>
+                </li>         
+
             </ul>
         </div>
     </div>

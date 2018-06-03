@@ -24,9 +24,10 @@ define("DEFAULT_ACTION", "index");
 define("DEFAULT_PARAMS", []);
 
 #################################################################
-###                       Pages Path                          ###
+###                    Error Pages Path                       ###
 #################################################################
-define("PAGE_NOT_FOUND", APP_ROOT . "/views/page/not-found.php");
+define("PAGE_NOT_FOUND", APP_ROOT . "/views/error/not-found.php");
+define("METHOD_NOT_ALLOWED", APP_ROOT . "/views/error/method-not-allowed.php");
 
 
 #################################################################
@@ -34,5 +35,5 @@ define("PAGE_NOT_FOUND", APP_ROOT . "/views/page/not-found.php");
 #################################################################
 define("SITE_TITLE", "SharePosts 2");
 define("SITE_AUTHOR", "Pedro Frohmut");
-define("SITE_VERSION", "2.0.0");
+define("SITE_VERSION", "2.0.0 Alpha");
 

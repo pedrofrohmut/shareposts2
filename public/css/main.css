@@ -6,18 +6,20 @@
     
 */
 
-:root {
-    /* font-size: 20px !important;
+/* 
+Should be set on the root {
+    font-size: 20px !important;
     line-height: 1.2 !important;
-    font-family: 'Times New Roman', Times, serif !important; */
+    font-family: 'Times New Roman', Times, serif !important; 
+} */
+
+:root {
+
 }
 
 nav.navbar {
     border-radius: 0;
-}
-
-div.page-index-jumbotron {
-    margin-top: 50px;
+    margin-bottom: 70px;
 }
 
 @media(max-width:992px) {

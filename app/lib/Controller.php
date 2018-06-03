@@ -44,4 +44,9 @@ class Controller
         }
 
     }
+
+    protected function methodNotAllowed()
+    {
+        require_once METHOD_NOT_ALLOWED;
+    }
 }

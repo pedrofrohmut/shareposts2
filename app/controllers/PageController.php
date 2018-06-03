@@ -25,6 +25,6 @@ class PageController extends Controller
             "coder" => SITE_AUTHOR
         ];
 
-        $this->loadView("/page/about", $data);
+        $this->loadView("page/about", $data);
     }
 }
