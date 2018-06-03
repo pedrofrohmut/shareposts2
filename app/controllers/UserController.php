@@ -1,5 +1,5 @@
 <?php
-class UsersController extends Controller 
+class UserController extends Controller 
 {
     public function __construct()
     {
@@ -10,13 +10,13 @@ class UsersController extends Controller
     {
         $data = [];
 
-        $this->loadView("users/index", $data);
+        $this->loadView("user/index", $data);
     }
 
     public function login()
     {
         $data = [];
 
-        $this->loadView("users/login", $data);
+        $this->loadView("user/login", $data);
     }
 }

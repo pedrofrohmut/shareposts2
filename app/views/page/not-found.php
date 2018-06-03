@@ -2,7 +2,7 @@
 
 <div id="div404">
     <img src="<?=URL_ROOT?>/img/404.png" alt="Page Not Found">
-    <h1>404 - Page Not Found</h1>
+    <!-- <h1>404 - Page Not Found</h1> -->
     <p>Sorry, an error has occured, Requested page not found!</p>
 </div>
 

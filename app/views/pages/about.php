@@ -1,1 +1,0 @@
-<h1>Pages About View</h1>

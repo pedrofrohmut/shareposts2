@@ -12,6 +12,14 @@
     font-family: 'Times New Roman', Times, serif !important; */
 }
 
+nav.navbar {
+    border-radius: 0;
+}
+
+div.page-index-jumbotron {
+    margin-top: 50px;
+}
+
 @media(max-width:992px) {
     :root {
         

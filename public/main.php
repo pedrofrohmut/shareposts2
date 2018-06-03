@@ -16,14 +16,9 @@
 require_once "../app/Bootstrap.php";
 
 require_once APP_ROOT . "/views/inc/header.php";
-require_once APP_ROOT . "/views/inc/navbar.php";
-
-echo '<div class="container">';
 
 // loads the framework's core & Content of the page
 new RequestDispatcher();
-
-echo '</div>';
 
 // Includes the footer to all pages
 require_once APP_ROOT . "/views/inc/footer.php";

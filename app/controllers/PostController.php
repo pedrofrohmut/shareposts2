@@ -1,5 +1,5 @@
 <?php
-class PostsController extends Controller 
+class PostController extends Controller 
 {
     public function __construct()
     {
@@ -10,13 +10,13 @@ class PostsController extends Controller
     {
         $data = [];
 
-        $this->loadView("posts/index", $data);
+        $this->loadView("post/index", $data);
     }
 
     public function add()
     {
         $data = [];
 
-        $this->loadView("posts/add", $data);
+        $this->loadView("post/add", $data);
     }
 }

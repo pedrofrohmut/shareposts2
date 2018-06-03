@@ -19,18 +19,20 @@ define("URL_ROOT", (function() {
 })() );
 
 // Request Dispatcher
-define("DEFAULT_CONTROLLER", "PagesController");
+define("DEFAULT_CONTROLLER", "PageController");
 define("DEFAULT_ACTION", "index");
 define("DEFAULT_PARAMS", []);
 
 #################################################################
 ###                       Pages Path                          ###
 #################################################################
-define("PAGE_NOT_FOUND", APP_ROOT . "/views/pages/not-found.php");
+define("PAGE_NOT_FOUND", APP_ROOT . "/views/page/not-found.php");
 
 
 #################################################################
 ###                          SITE                             ###
 #################################################################
 define("SITE_TITLE", "SharePosts 2");
+define("SITE_AUTHOR", "Pedro Frohmut");
+define("SITE_VERSION", "2.0.0");
 
