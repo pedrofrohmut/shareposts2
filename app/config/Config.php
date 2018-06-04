@@ -28,12 +28,3 @@ define("DEFAULT_PARAMS", []);
 #################################################################
 define("PAGE_NOT_FOUND", APP_ROOT . "/views/error/not-found.php");
 define("METHOD_NOT_ALLOWED", APP_ROOT . "/views/error/method-not-allowed.php");
-
-
-#################################################################
-###                          SITE                             ###
-#################################################################
-define("SITE_TITLE", "SharePosts 2");
-define("SITE_AUTHOR", "Pedro Frohmut");
-define("SITE_VERSION", "2.0.0 Alpha");
-

@@ -6,6 +6,7 @@
 # Config
 require_once "config/Database.php";
 require_once "config/Config.php";
+require_once "config/Content.php";
 
 # Helpers
 require_once "helpers/ErrorCss.php";

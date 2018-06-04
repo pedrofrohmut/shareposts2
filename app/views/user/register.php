@@ -1,15 +1,15 @@
 <div class="row">
-    <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
+    <div class="col-lg-6 col-md-8 col-sm-12 mx-auto">
 
-        <h2>Create an Account</h2>
-        <p class="my-4">Please fill up this form to register as a user and be a part of our community</p>
+        <h2 class="text-center mb-2">Join Us</h2>
+        <p class="text-center my-5">Please fill up this form to register as a user and be a part of our community</p>
 
         <form action="<?=URL_ROOT?>/user/register" method="POST">
 
             <!-- Name -->
             <div class="form-group my-4">
                 <label class="required sr-only">Name</label>
-                <input type="text" name="name" class="form-control <?=isInvalid($data['nameErr'])?>" value="<?=$data['name']?>" placeholder="Name (required)">
+                <input type="text" name="name" class="form-control <?=isInvalid($data['nameErr'])?>" value="<?=$data['name']?>" placeholder="User Name (required)">
                 <div class="invalid-feedback"><?=$data['nameErr']?></div>
             </div>
 
@@ -28,7 +28,7 @@
             </div>
 
             <!-- Confirm Password -->
-            <div class="form-group my-4">
+            <div class="form-group mb-5 mt-4">
                 <label class="required sr-only">Confirm Password</label>
                 <input type="password" name="confirmPassword" class="form-control <?=isInvalid($data['confirmPasswordErr'])?>" value="<?=$data['confirmPassword']?>" placeholder="Confirm Password (required)">
                 <div class="invalid-feedback"><?=$data['confirmPasswordErr']?></div>
@@ -42,7 +42,7 @@
                     <div class="form-check mb-2">
                         <input type="checkbox" class="form-check-input">
                         <label for="form-check-label">
-                            Agree to terms and conditions
+                            Agree to <strong>terms and conditions</strong>
                         </label>
                     </div>                    
                 </div>
@@ -50,7 +50,7 @@
                 <div class="col-md-6 col-sm-12 float-md-left">
                     <!-- Submit -->
                     <button type="submit" class="btn btn-primary btn-block">
-                        <i class="fa fa-paper-plane" aria-hidden="true"></i> Submit
+                        <i class="fa fa-paper-plane" aria-hidden="true"></i> Register
                     </button>
                 </div>
             </div>            

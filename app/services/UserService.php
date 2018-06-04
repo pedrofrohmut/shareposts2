@@ -31,6 +31,8 @@ class UserService
 
     public function registerOnPost()
     {
+        $userDao = new UserDao( ConnectionFactory::getConnection() );
+
         // Sanitize POST data
         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
@@ -49,12 +51,22 @@ class UserService
             $data['nameErr'] = "Please enter your name.";
             $data['password'] = "";
             $data['confirmPassword'] = "";
+        } else {
+            $userFound = $userDao->findUserByName($data['name']);
+            if ($userFound) {
+                $data['nameErr'] = "This user name have already been taken.";
+            }
         }
 
         if (empty($data['email'])) {
             $data['emailErr'] = "Please enter your email.";
             $data['password'] = "";
             $data['confirmPassword'] = "";
+        } else {
+            $userFound = $userDao->findUserByEmail($data['email']);    
+            if ($userFound) {
+                $data['emailErr'] = "This e-mail have already been taken.";
+            }         
         }
 
         if (empty($data['password'])) {
@@ -77,15 +89,22 @@ class UserService
             !empty($data['passwordErr']) && !empty($data['confirmPasswordErr'])
         ) {
             $viewPath = "user/register";
-
             return new ServiceResponse($viewPath, $data);
         }
         
+        $user = new User();
+        $user->setName($data['name']);
+        $user->setEmail($data['email']);
+        $user->setPassword( password_hash($data['password'], PASSWORD_DEFAULT) );
         
+        $created = $userDao->create($user);
 
-        $viewPath = "user/register";
+        if (!$created) {
+            $viewPath = "user/register";            
+            return new ServiceResponse($viewPath, $data);
+        }
 
-        return new ServiceResponse($viewPath, $data);
+        return $this->loginOnGet();
     }
     
     public function loginOnGet()

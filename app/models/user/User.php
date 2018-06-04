@@ -9,33 +9,41 @@ class User
 
     public function __construct()
     {
-        echo "<br><br>User constructed.";
+        $this->init();
+    }
+
+    private function init()
+    {
+        $this->id = 0;
+        $this->name = "";
+        $this->email = "";
+        $this->password = "";
+        $this->createdAt = "";
     }
 
     public function getId():int
     {
-        return $this->id ?? 0;
+        return $this->id;
     }
 
     public function getName():string
     {
-        return $this->name ?? "";
+        return $this->name;
     }
 
     public function getEmail():string
     {
-        return $this->email ?? "";
+        return $this->email;
     }
 
     public function getPassword():string
     {
-        return $this->password ?? "";
+        return $this->password;
     }
 
     public function getCreatedAt():string 
     {
-        // TODO: format it before return
-        return $this->createdAt ?? "";
+        return $this->createdAt;
     }
 
     public function setId(int $id)
