@@ -1,5 +1,8 @@
 <?php 
 require_once APP_ROOT . "/services/ServiceResponse.php";
+require_once APP_ROOT . "/helpers/ConnectionFactory.php";
+require_once APP_ROOT . "/models/user/UserDao.php";
+require_once APP_ROOT . "/models/user/User.php";
 
 class UserService
 {
@@ -77,6 +80,7 @@ class UserService
 
             return new ServiceResponse($viewPath, $data);
         }
+        
         
 
         $viewPath = "user/register";
