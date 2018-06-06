@@ -12,6 +12,7 @@
  * them in each view of the application
  * 
  */
+session_start();
 
 require_once "../app/Bootstrap.php";
 
