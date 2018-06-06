@@ -25,18 +25,35 @@
 
             <ul class="navbar-nav navbar-right">
 
-                <li class="nav-item">
-                    <a class="nav-link" href="<?=URL_ROOT?>/user/register">
-                        <i class="fa fa-user-plus"></i> Register
-                    </a>
-                </li>
+                <?php 
+                        if (isset($_SESSION['user'])) : 
+                            $user = $_SESSION['user'];
+                ?>
+                            <li class="nav-item">
+                                <span class="nav-link">
+                                    <i class="fa fa-user"></i> <?=$user->getName()?>
+                                </span>
+                            </li>    
 
-                <li class="nav-item">
-                    <a class="nav-link" href="<?=URL_ROOT?>/user/login">
-                        <i class="fa fa-sign-in" aria-hidden="true"></i> Login
-                    </a>
-                </li>         
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?=URL_ROOT?>/user/logout">
+                                    <i class="fa fa-sign-out" aria-hidden="true"></i> Logout
+                                </a>
+                            </li>         
+                <?php   else : ?>
 
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?=URL_ROOT?>/user/register">
+                                    <i class="fa fa-user-plus"></i> Register
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?=URL_ROOT?>/user/login">
+                                    <i class="fa fa-sign-in" aria-hidden="true"></i> Login
+                                </a>
+                            </li>         
+                <?php   endif;?>
             </ul>
         </div>
     </div>

@@ -8,18 +8,15 @@
  * 2. The secondary function is to have all the requires in the application using
  * the require to the Bootstrap file
  * 
- * 3. Require the includes of the application to avoid the repetitive task of requiring
- * them in each view of the application
- * 
+ * 3. Start the session and requires the necessary class for the session before starting 
+ * it. So it can unserialize objects 
+ *  
  */
-session_start();
-
 require_once "../app/Bootstrap.php";
 
-require_once APP_ROOT . "/views/inc/header.php";
+// Build Session
+require_once APP_ROOT . "/models/user/User.php"; // So that the session can unserialize
+session_start();
 
 // loads the framework's core & Content of the page
 new RequestDispatcher();
-
-// Includes the footer to all pages
-require_once APP_ROOT . "/views/inc/footer.php";

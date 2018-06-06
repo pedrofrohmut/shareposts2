@@ -1,3 +1,4 @@
+<?php require_once APP_ROOT . "/views/inc/header.php"; ?>
 <div class="row">
     <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
         <div class="jumbotron page-index-jumbotron">
@@ -6,3 +7,4 @@
         </div>
     </div>
 </div>
+<?php require_once APP_ROOT . "/views/inc/footer.php"; ?>

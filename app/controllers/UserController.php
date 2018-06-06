@@ -20,7 +20,8 @@ class UserController extends Controller
             return;
         } 
 
-        $this->profile($_SESSION['user']->id);
+        $this->loadView("page/index", []); #TEMP
+        // $this->profile($_SESSION['user']->id);
     }
 
     /**
@@ -94,6 +95,19 @@ class UserController extends Controller
         //     default: 
         //         echo "Default was called in test";
         // }
-        $this->methodNotAllowed();
+        // $this->methodNotAllowed();
+    }
+
+    public function logout()
+    {
+        switch ($_SERVER['REQUEST_METHOD'])
+        {
+            case 'GET': 
+                $serviceResponse = ( new UserService() )->logoutOnGet();
+                $this->loadView($serviceResponse->getViewPath(), $serviceResponse->getData());
+                break;
+            default:
+                $this->methodNotAllowed();
+        }
     }
 }

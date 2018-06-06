@@ -17,9 +17,15 @@ class UserDao
         $stm = $this->conn->prepare("SELECT * FROM users WHERE email = :email");
         $stm->bindValue(":email", $email, PDO::PARAM_STR);        
         $stm->execute();
-        $user = $stm->fetch();
+        $userFetch = $stm->fetch();
 
-        if ($user) {
+        if ($userFetch) {
+            $user = new User();
+            $user->setId($userFetch->id);
+            $user->setName($userFetch->name);
+            $user->setEmail($userFetch->email);
+            $user->setPassword($userFetch->password);
+            $user->setCreatedAt($userFetch->created_at);
             return $user;
         } else {
             return false;
@@ -31,9 +37,15 @@ class UserDao
         $stm = $this->conn->prepare("SELECT * FROM users WHERE name = :name");
         $stm->bindValue(":name", $name, PDO::PARAM_STR);
         $stm->execute();
-        $user = $stm->fetch();
+        $userFetch = $stm->fetch();
 
-        if ($user) {
+        if ($userFetch) {
+            $user = new User();
+            $user->setId($userFetch->id);
+            $user->setName($userFetch->name);
+            $user->setEmail($userFetch->email);
+            $user->setPassword($userFetch->password);
+            $user->setCreatedAt($userFetch->created_at);
             return $user;
         } else {
             return false;

@@ -1,3 +1,4 @@
+<?php require_once APP_ROOT . "/views/inc/header.php"; ?>
 <div class="row">
     <div class="col-lg-6 col-md-8 col-sm-12 mx-auto">
 
@@ -58,3 +59,4 @@
 
     </div>
 </div>
+<?php require_once APP_ROOT . "/views/inc/footer.php"; ?>

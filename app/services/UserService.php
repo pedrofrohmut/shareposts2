@@ -85,8 +85,8 @@ class UserService
 
         // If there are any errors
         if (
-            !empty($data['nameErr'])     && !empty($data['emailErr']) &&
-            !empty($data['passwordErr']) && !empty($data['confirmPasswordErr'])
+            !empty($data['nameErr'])     || !empty($data['emailErr']) ||
+            !empty($data['passwordErr']) || !empty($data['confirmPasswordErr'])
         ) {
             $viewPath = "user/register";
             return new ServiceResponse($viewPath, $data);
@@ -137,26 +137,44 @@ class UserService
         if (empty($data['email'])) {
             $data['emailErr'] = "Please enter your email.";
             $data['password'] = "";
-            $data['confirmPassword'] = "";
+        } else {
+            $userDao = new UserDao( ConnectionFactory::getConnection() );
+            $user = $userDao->findUserByEmail($data['email']);
+            if (!$user) {
+                $data['emailErr'] = "No user with this e-mail was found.";
+            }
         }
 
         if (empty($data['password'])) {
             $data['passwordErr'] = "Please enter your password.";
             $data['password'] = "";
-            $data['confirmPassword'] = "";
+        } elseif ($user && !password_verify($data['password'], $user->getPassword())) {
+            $data['passwordErr'] = "This password is not valid.";
+            $data['password'] = "";
         }
 
         // If there are any errors
         if (
-            !empty($data['emailErr']) && !empty($data['passwordErr'])
+            !empty($data['emailErr']) || !empty($data['passwordErr'])
         ) {
             $viewPath = "user/login";
             return new ServiceResponse($viewPath, $data);
-        }
+        }        
+
+        // Set autenticate user in the session
+        $_SESSION['user'] = $user;
+
+        $viewPath = "page/index";
+        return new ServiceResponse($viewPath, []);
+    }
+
+    public function logoutOnGet()
+    {
+        unset($_SESSION['user']);
+
+        session_destroy();
         
-
-        $viewPath = "user/login";
-
-        return new ServiceResponse($viewPath, $data);
+        $viewPath = "page/index";
+        return new ServiceResponse($viewPath, []);
     }
 }
