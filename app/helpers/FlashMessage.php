@@ -9,6 +9,8 @@
  * 
  */
 
+ // TODO: remake it as a class with methods and add require_once before the session_start() (cuz serialization problems)
+
 function setFlashMessage($msg, $class)
 {
     // Initializes the assoc_array

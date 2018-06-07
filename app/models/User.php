@@ -14,10 +14,10 @@ class User
 
     private function init()
     {
-        $this->id = 0;
-        $this->name = "";
-        $this->email = "";
-        $this->password = "";
+        $this->id        = 0;
+        $this->name      = "";
+        $this->email     = "";
+        $this->password  = "";
         $this->createdAt = "";
     }
 

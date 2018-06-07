@@ -1,7 +1,14 @@
 <?php
+require_once APP_ROOT . "/lib/Controller.php";
 require_once APP_ROOT . "/services/PostService.php";
 require_once APP_ROOT . "/services/PageService.php";
 
+/**
+ * 1. This class have the routes as it methods (Routes File)
+ * 2. It controls WHO can access WHAT (Access Control)
+ * 3. Chooses the right service for each situation 
+ * 4. Process the service response to load the right view with the right content
+ */
 class PageController extends Controller
 {
     public function __construct() { }
@@ -11,8 +18,7 @@ class PageController extends Controller
         switch ($_SERVER['REQUEST_METHOD'])
         {
             case 'GET':
-                // redirects when user is logged in
-                if (isset($_SESSION['user'])) {
+                if (SessionManager::isUserLoggedIn()) {
                     $serviceResponse = ( new PostService() )->indexOnGet();    
                 } else {
                     $serviceResponse = ( new PageService() )->indexOnGet();

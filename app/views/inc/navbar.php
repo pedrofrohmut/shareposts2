@@ -30,9 +30,9 @@
                             $user = $_SESSION['user'];
                 ?>
                             <li class="nav-item">
-                                <span class="nav-link">
+                                <a class="nav-link" href="<?=URL_ROOT?>/user/profile">
                                     <i class="fa fa-user"></i> <?=$user->getName()?>
-                                </span>
+                                </a>
                             </li>    
 
                             <li class="nav-item">

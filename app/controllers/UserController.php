@@ -1,7 +1,14 @@
 <?php
+require_once APP_ROOT . "/lib/Controller.php";
 require_once APP_ROOT . "/services/UserService.php";
 require_once APP_ROOT . "/services/ServiceResponse.php";
 
+/**
+ * 1. This class have the routes as it methods (Routes File)
+ * 2. It controls WHO can access WHAT (Access Control)
+ * 3. Chooses the right service for each situation 
+ * 4. Process the service response to load the right view with the right content
+ */
 class UserController extends Controller 
 {
     public function __construct()
@@ -15,12 +22,15 @@ class UserController extends Controller
     */
     public function index()
     {
-        if (!isset($_SESSION['user'])) {
-            $this->login();
-            return;
-        } 
+        // TODO: change this to standart
+        die(" - TODO: implement this method.");
 
-        $this->loadView("page/index", []); #TEMP
+        // if (!isset($_SESSION['user'])) {
+        //     $this->login();
+        //     return;
+        // } 
+
+        // $this->loadView("page/index", []); #TEMP
         // $this->profile($_SESSION['user']->id);
 
         // switch ($_SERVER['REQUEST_METHOD'])
@@ -45,7 +55,11 @@ class UserController extends Controller
                 $this->loadView($serviceResponse->getViewPath(), $serviceResponse->getData());
                 break;
             case 'POST': # Submit the form
-                $serviceResponse = ( new UserService )->loginOnPost();
+                if (SessionManager::isUserLoggedIn()) {
+                    $serviceResponse = ( new PostService )->indexOnGet();
+                } else {
+                    $serviceResponse = ( new UserService )->loginOnPost();
+                }
                 $this->loadView($serviceResponse->getViewPath(), $serviceResponse->getData());
                 break;
             default:
@@ -62,11 +76,19 @@ class UserController extends Controller
         switch ($_SERVER['REQUEST_METHOD'])
         {
             case 'GET': # Load the form
-                $serviceResponse = ( new UserService() )->registerOnGet();
+                if (SessionManager::isUserLoggedIn()) {
+                    $serviceResponse = ( new PostService )->indexOnGet();
+                } else {
+                    $serviceResponse = ( new UserService() )->registerOnGet();
+                }
                 $this->loadView($serviceResponse->getViewPath(), $serviceResponse->getData());
                 break;
             case 'POST': # Submit the form
-                $serviceResponse = ( new UserService )->registerOnPost();
+                if (SessionManager::isUserLoggedIn()) {
+                    $serviceResponse = ( new PostService )->indexOnGet();
+                } else {
+                    $serviceResponse = ( new UserService )->registerOnPost();
+                }
                 $this->loadView($serviceResponse->getViewPath(), $serviceResponse->getData());
                 break;
             default:
@@ -76,15 +98,18 @@ class UserController extends Controller
 
     public function profile(int $id = 0)
     {
-        if ($id === 0) {
-            // TODO: Show Flash Error Message
-            $this->index();
-            return;
-        }
+        // TODO: change this to standart
+        die(" - TODO: implement this method.");
 
-        $data = [];
+        // if ($id === 0) {
+        //     // TODO: Show Flash Error Message
+        //     $this->index();
+        //     return;
+        // }
 
-        $this->loadView("user/profile", $data);
+        // $data = [];
+
+        // $this->loadView("user/profile", $data);
 
         // switch ($_SERVER['REQUEST_METHOD'])
         // {
@@ -119,7 +144,11 @@ class UserController extends Controller
         switch ($_SERVER['REQUEST_METHOD'])
         {
             case 'GET': 
-                $serviceResponse = ( new UserService() )->logoutOnGet();
+                if (SessionManager::isUserLoggedIn()) {
+                    $serviceResponse = ( new UserService() )->logoutOnGet();
+                } else {
+                    $serviceResponse = ( new PageService() )->indexOnGet();
+                }
                 $this->loadView($serviceResponse->getViewPath(), $serviceResponse->getData());
                 break;
             default:

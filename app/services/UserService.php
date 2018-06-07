@@ -1,8 +1,8 @@
 <?php 
 require_once APP_ROOT . "/services/ServiceResponse.php";
 require_once APP_ROOT . "/helpers/ConnectionFactory.php";
-require_once APP_ROOT . "/models/user/UserDao.php";
-require_once APP_ROOT . "/models/user/User.php";
+require_once APP_ROOT . "/daos/UserDao.php";
+require_once APP_ROOT . "/models/User.php";
 
 class UserService
 {
@@ -161,18 +161,15 @@ class UserService
             return new ServiceResponse($viewPath, $data);
         }        
 
-        // Set autenticate user in the session
-        $_SESSION['user'] = $user;
+        SessionManager::setUser($user);
 
-        $viewPath = "page/index";
+        $viewPath = "post/index";
         return new ServiceResponse($viewPath, []);
     }
 
     public function logoutOnGet()
     {
-        unset($_SESSION['user']);
-
-        session_destroy();
+        SessionManager::logoutUser();
         
         $viewPath = "page/index";
         return new ServiceResponse($viewPath, []);

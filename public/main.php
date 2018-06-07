@@ -14,9 +14,8 @@
  */
 require_once "../app/Bootstrap.php";
 
-// Build Session
-require_once APP_ROOT . "/models/user/User.php"; // So that the session can unserialize
-session_start();
+// Build & start session
+SessionManager::start();
 
 // loads the framework's core & Content of the page
 new RequestDispatcher();

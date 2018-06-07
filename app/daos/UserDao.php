@@ -1,5 +1,5 @@
 <?php
-require_once APP_ROOT . "/models/user/User.php";
+require_once APP_ROOT . "/models/User.php";
 
 class UserDao
 {
@@ -7,8 +7,6 @@ class UserDao
 
     public function __construct($connection)
     {
-        // echo "<br><br>User Dao construct."; #DEBUG
-
         $this->conn = $connection;
     }
 
