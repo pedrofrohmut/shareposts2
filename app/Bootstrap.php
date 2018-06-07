@@ -11,6 +11,7 @@ require_once "config/Content.php";
 # Helpers
 require_once "helpers/ErrorCss.php";
 require_once "helpers/FlashMessage.php";
+require_once "helpers/StringHandler.php";
 require_once "helpers/SessionManager.php";
 
 # Core libs

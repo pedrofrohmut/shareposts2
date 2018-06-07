@@ -1,6 +1,6 @@
 <?php require_once APP_ROOT . "/views/inc/header.php"; ?>
 
-<div class="row">
+<div class="row mb-5">
     <div class="col-sm-6">
         <h1>Posts Feed</h1>
     </div>
@@ -11,7 +11,29 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-lg-6 col-md-8 col-sm-12 mx-auto">
+    <div class="col-lg-10 col-md-11 col-sm-12 mx-auto">
+
+        <?php foreach($data['posts'] as $post) :?>
+
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h4 class="card-title"><?=$post->getTitle()?></h4>
+
+                    <p class="card-text py-2 text-justify">
+                        <?= StringHandler::limitTheDisplayText($post->getBody(), 200) ?>
+                    </p> 
+
+                    <a href="<?=URL_ROOT?>/post/show/<?=$post->getId()?>" class="btn btn-info btn-sm">
+                        <i class="fa fa-file-text-o pr-1"></i> Read More
+                    </a>
+
+                    <p class="pull-right text-secondary font-weight-light">
+                        Written by <?=$post->getUser()->getName()?> on <?=$post->getCreatedAt()?>
+                    </p>
+                </div>
+            </div>
+
+        <?php endforeach;?>
 
     </div>
 </div>

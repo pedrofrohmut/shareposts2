@@ -1,6 +1,9 @@
 <?php
 require_once APP_ROOT . "/models/User.php";
 
+/**
+ * Preference for CRUD names when applicable
+ */
 class UserDao
 {
     private $conn;

@@ -48,4 +48,9 @@ class PostController extends Controller
         //         $this->methodNotAllowed();
         // }
     }
+
+    public function show(int $id)
+    {
+        die(" - TODO: implement this method");
+    }
 }

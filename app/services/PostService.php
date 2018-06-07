@@ -1,5 +1,7 @@
 <?php
 require_once APP_ROOT . "/services/ServiceResponse.php";
+require_once APP_ROOT . "/helpers/ConnectionFactory.php";
+require_once APP_ROOT . "/daos/PostDao.php";
 
 class PostService
 {
@@ -10,8 +12,14 @@ class PostService
 
     public function indexOnGet()
     {
+        $posts = ( new PostDao( ConnectionFactory::getConnection() ) )->getPosts();
+        
+        $data = [
+            "posts" => $posts
+        ];
+
         $viewPath = "post/index";
-        $data = [];
+
         return new ServiceResponse($viewPath, $data);
     }
-}
+} 
