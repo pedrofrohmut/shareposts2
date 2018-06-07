@@ -22,6 +22,14 @@ class UserController extends Controller
 
         $this->loadView("page/index", []); #TEMP
         // $this->profile($_SESSION['user']->id);
+
+        // switch ($_SERVER['REQUEST_METHOD'])
+        // {
+        //     case 'GET':
+        //         break;
+        //     default:
+        //         $this->methodNotAllowed();
+        // }
     }
 
     /**
@@ -77,6 +85,14 @@ class UserController extends Controller
         $data = [];
 
         $this->loadView("user/profile", $data);
+
+        // switch ($_SERVER['REQUEST_METHOD'])
+        // {
+        //     case 'GET':
+        //         break;
+        //     default:
+        //         $this->methodNotAllowed();
+        // }
     }
 
     /**
