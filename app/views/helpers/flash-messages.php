@@ -1,8 +1,7 @@
 <?php
-$arr = $_SESSION['flashMessages'] ?? [];
+$messages = SessionManager::getFlashMessages();
 
-foreach ($arr as $message => $class) :
-    // echo "<div class=\"$class>$message</div>";
+foreach ($messages as $message => $class) :
 ?>
 
 <div class="alert <?= $class ?? '' ?> alert-dismissible">
@@ -13,5 +12,5 @@ foreach ($arr as $message => $class) :
 <?php
 endforeach;
 
-$_SESSION['flashMessages'] = null;
+SessionManager::cleanFlashMessages();
 ?>

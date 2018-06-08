@@ -1,32 +1,21 @@
 <?php
 /**
- * 
- * Get and Set Flash Messages: Messages that are set in the session and are deleted once it is called
- * 
- * All the flash messages will be stored in the $_SESSION['flashMessages']
- * 
- * All the work must be done in here. Out side this helper you must only get, set and style
- * 
+ * Get and Set Flash Messages: Messages that are set in the session and are deleted once they are called
+ * Displaying Procedures will be made by the viewComponent = views/helpers/flash-message.php
  */
-
- // TODO: remake it as a class with methods and add require_once before the session_start() (cuz serialization problems)
-
-function setFlashMessage($msg, $class)
+class flashMessage
 {
-    // Initializes the assoc_array
-    if (!isset($_SESSION['flashMessages'])) {
-        $_SESSION['flashMessages'] = [];
+    public static function setMessage($msg, $class = "info")
+    {
+        if (empty($msg)) return;
+
+        $class = "alert-". $class ." flash-message";
+
+        SessionManager::setFlashMessage($msg, $class);
     }
 
-    // Add elem
-    $_SESSION['flashMessages'][$msg] = "alert-". $class ." flash-message";
+    public static function displayAll()
+    {
+        require_once APP_ROOT . "/views/helpers/flash-messages.php";
+    }
 }
-
-
-function getFlashMessage()
-{
-    require_once APP_ROOT . "/views/helpers/flash-messages.php";
-}
-
-// setFlashMessage("Hello World!", "danger"); #DEBUG
-// setFlashMessage("Another World!", "success"); #DEBUG

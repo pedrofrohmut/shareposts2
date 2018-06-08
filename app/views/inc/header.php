@@ -24,5 +24,3 @@
 
 <!-- It ends in the footer -->
 <main class="container"> 
-
-<!-- <?php print_r($_SESSION['user'] ?? '') ?> -->

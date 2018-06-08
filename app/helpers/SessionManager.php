@@ -42,4 +42,19 @@ class SessionManager
             return false;
         }
     }
+
+    public static function getFlashMessages()
+    {
+        return $_SESSION['flashMessages'] ?? [];
+    }
+
+    public static function setFlashMessage(string $message, string $class)
+    {
+        $_SESSION['flashMessages'][$message] = $class;
+    }
+
+    public static function cleanFlashMessages()
+    {
+        unset($_SESSION['flashMessages']);
+    }
 }

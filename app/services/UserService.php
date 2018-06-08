@@ -104,7 +104,7 @@ class UserService
             return new ServiceResponse($viewPath, $data);
         }
 
-        setFlashMessage("User successfuly register in our community!", "success");
+        FlashMessage::setMessage("User successfuly register in our community!", "success");
         return $this->loginOnGet();
     }
     
