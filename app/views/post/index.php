@@ -10,8 +10,11 @@
         </a>
     </div>
 </div>
-<div class="row">
-    <div class="col-lg-10 col-md-11 col-sm-12 mx-auto">
+<div class="row justify-content-center">
+    <!-- <div class="col-lg-0">
+        <h3>SIDE BAR 1</h3>
+    </div>     -->
+    <div class="col-lg-10 col-md-11 col-sm-12">
 
         <?php foreach($data['posts'] as $post) :?>
 
@@ -36,6 +39,11 @@
         <?php endforeach;?>
 
     </div>
+    <!-- <div class="col-lg-2">
+        <h3>SIDE BAR 2</h3>
+    </div> -->
 </div>
+
+<?php require APP_ROOT . "/views/helpers/go-to-top-btn.php"; ?>
 
 <?php require_once APP_ROOT . "/views/inc/footer.php"; ?>

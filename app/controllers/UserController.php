@@ -51,14 +51,20 @@ class UserController extends Controller
         switch ($_SERVER['REQUEST_METHOD'])
         {
             case 'GET': # Load the form
-                $serviceResponse = ( new UserService() )->loginOnGet();
+                if (SessionManager::isUserLoggedIn()) {
+                    FlashMessage::setUserAlreadyLoggedInMessage();
+                    $serviceResponse = ( new PageService() )->indexOnGet();
+                } else {
+                    $serviceResponse = ( new UserService() )->loginOnGet();
+                }
                 $this->loadView($serviceResponse->getViewPath(), $serviceResponse->getData());
                 break;
             case 'POST': # Submit the form
                 if (SessionManager::isUserLoggedIn()) {
-                    $serviceResponse = ( new PostService )->indexOnGet();
+                    FlashMessage::setUserAlreadyLoggedInMessage();
+                    $serviceResponse = ( new PostService() )->indexOnGet();
                 } else {
-                    $serviceResponse = ( new UserService )->loginOnPost();
+                    $serviceResponse = ( new UserService() )->loginOnPost();
                 }
                 $this->loadView($serviceResponse->getViewPath(), $serviceResponse->getData());
                 break;
@@ -77,7 +83,8 @@ class UserController extends Controller
         {
             case 'GET': # Load the form
                 if (SessionManager::isUserLoggedIn()) {
-                    $serviceResponse = ( new PostService )->indexOnGet();
+                    FlashMessage::setUserAlreadyLoggedInMessage();
+                    $serviceResponse = ( new PostService() )->indexOnGet();
                 } else {
                     $serviceResponse = ( new UserService() )->registerOnGet();
                 }
@@ -85,9 +92,10 @@ class UserController extends Controller
                 break;
             case 'POST': # Submit the form
                 if (SessionManager::isUserLoggedIn()) {
-                    $serviceResponse = ( new PostService )->indexOnGet();
+                    FlashMessage::setUserAlreadyLoggedInMessage();
+                    $serviceResponse = ( new PostService() )->indexOnGet();
                 } else {
-                    $serviceResponse = ( new UserService )->registerOnPost();
+                    $serviceResponse = ( new UserService() )->registerOnPost();
                 }
                 $this->loadView($serviceResponse->getViewPath(), $serviceResponse->getData());
                 break;
@@ -147,6 +155,7 @@ class UserController extends Controller
                 if (SessionManager::isUserLoggedIn()) {
                     $serviceResponse = ( new UserService() )->logoutOnGet();
                 } else {
+                    FlashMessage::setUserNotLoggedInMessage();
                     $serviceResponse = ( new PageService() )->indexOnGet();
                 }
                 $this->loadView($serviceResponse->getViewPath(), $serviceResponse->getData());

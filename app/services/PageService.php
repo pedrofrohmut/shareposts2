@@ -1,9 +1,9 @@
 <?php
-class PageService
+class PageService extends Service 
 {
-    public function __construct()
+    public function __construct(array $params = [])
     {
-
+        parent::__construct($params);
     }
 
     public function indexOnGet()

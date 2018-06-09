@@ -24,6 +24,7 @@ class PostController extends Controller
                 if (SessionManager::isUserLoggedIn()) {
                     $serviceResponse = ( new PostService() )->indexOnGet();
                 } else {
+                    FlashMessage::setUserNotLoggedInMessage();
                     $serviceResponse = ( new PageService() )->indexOnGet();
                 }
                 $this->loadView($serviceResponse->getViewPath(), $serviceResponse->getData());
@@ -35,22 +36,46 @@ class PostController extends Controller
 
     public function add()
     {
-        die(" - TODO: implement this method");
-        // $data = [];
-
-        // $this->loadView("post/add", $data);
-
-        // switch ($_SERVER['REQUEST_METHOD'])
-        // {
-        //     case 'GET':
-        //         break;
-        //     default:
-        //         $this->methodNotAllowed();
-        // }
+        switch ($_SERVER['REQUEST_METHOD'])
+        {
+            case 'GET':
+                if (SessionManager::isUserLoggedIn()) {
+                    $serviceResponse = ( new PostService() )->addOnGet();
+                } else {
+                    FlashMessage::setUserNotLoggedInMessage();
+                    $serviceResponse = ( new PageService() )->indexOnGet();
+                }
+                $this->loadView($serviceResponse->getViewPath(), $serviceResponse->getData());
+                break;
+            case 'POST':
+                if (SessionManager::isUserLoggedIn()) {
+                    $serviceResponse = ( new PostService() )->addOnPost();
+                } else {
+                    FlashMessage::setUserNotLoggedInMessage();
+                    $serviceResponse = ( new PageService() )->indexOnGet();
+                }
+                $this->loadView($serviceResponse->getViewPath(), $serviceResponse->getData());
+                break;
+            default:
+                $this->methodNotAllowed();
+        }
     }
 
     public function show(int $id)
     {
-        die(" - TODO: implement this method");
+        switch ($_SERVER["REQUEST_METHOD"])
+        {
+            case "GET":
+                if (SessionManager::isUserLoggedIn()) {
+                    $serviceResponse = ( new PostService(["postId" => $id]) )->showOnGet();
+                } else {
+                    FlashMessage::setUserNotLoggedInMessage();
+                    $serviceResponse = ( new PageService() )->indexOnGet();
+                }
+                $this->loadView($serviceResponse->getViewPath(), $serviceResponse->getData());
+                break;
+            default:
+                $this->methodNotAllowed();
+        }
     }
 }

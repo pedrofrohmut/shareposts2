@@ -11,5 +11,8 @@
 <!-- Custom Scripts -->
 <script src="<?=URL_ROOT?>/js/main.js"></script>
 
+<footer id="footer">
+    <p>Coded by Pedro Frohmut</p>
+</footer>
 </body>
 </html>

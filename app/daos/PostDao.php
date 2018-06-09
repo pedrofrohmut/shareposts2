@@ -14,7 +14,7 @@ class PostDao
         $this->conn = $connection;
     }
 
-    public function getPosts()
+    public function getPosts():array
     {
         $stm = $this->conn->prepare(
         "   SELECT 
@@ -46,5 +46,57 @@ class PostDao
         }
 
         return $posts;
+    }
+
+    public function create(Post $post):bool
+    {
+        $stm = $this->conn->prepare(
+        "   INSERT INTO posts (
+                 user_id,  title,  body
+            ) VALUES (
+                :user_id, :title, :body
+            )"
+        );
+
+        $stm->bindValue(":user_id", $post->getUser()->getId(), PDO::PARAM_INT);
+        $stm->bindValue(":title",   $post->getTitle(),         PDO::PARAM_STR);
+        $stm->bindValue(":body",    $post->getBody(),          PDO::PARAM_STR);
+
+        if ($stm->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function findPostById(int $id)
+    {
+        $stm = $this->conn->prepare(
+        "   SELECT 
+                p.id, p.user_id, u.name AS user_name, p.title, p.body, p.created_at
+            FROM 
+                posts AS p, users AS u 
+            WHERE 
+                p.user_id = u.id AND p.id = :id");
+        $stm->bindValue(":id", $id, PDO::PARAM_INT);
+        $stm->execute();
+        $fetchedPost = $stm->fetch();
+
+        if ($fetchedPost) {
+            $user = new User();
+            $user->setId($fetchedPost->user_id);
+            $user->setName($fetchedPost->user_name);
+
+            $post = new Post();
+            $post->setId($fetchedPost->id);
+            $post->setUser($user);
+            $post->setTitle($fetchedPost->title);
+            $post->setBody($fetchedPost->body);
+            $post->setCreatedAt($fetchedPost->created_at);
+
+            return $post;
+        } else {
+            return false;
+        }
     }
 }

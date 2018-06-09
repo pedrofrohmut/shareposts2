@@ -16,6 +16,8 @@
 
 <!-- Custom CSS -->
 <link rel="stylesheet" href="<?=URL_ROOT?>/css/main.css">
+<link rel="stylesheet" href="<?=URL_ROOT?>/css/footer.css">
+<link rel="stylesheet" href="<?=URL_ROOT?>/css/flash-messages.css">
 
 </head>
 <body>
@@ -24,3 +26,9 @@
 
 <!-- It ends in the footer -->
 <main class="container"> 
+
+    <div class="row flash-messages-wrapper">
+        <div class="col-lg-6 col-md-10 col-sm-12 mx-auto">
+            <?php FlashMessage::displayAll() ?>
+        </div>
+    </div>

@@ -2,8 +2,6 @@
 <div class="row">
     <div class="col-lg-6 col-md-8 col-sm-12 mx-auto">
 
-        <?php FlashMessage::displayAll() ?>
-
         <h2 class="text-center">Welcome Back</h2>
         <p class="mb-5 mt-4 text-center">Please fill in your credentials to log in</p>
 

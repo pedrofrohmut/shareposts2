@@ -43,6 +43,15 @@ class SessionManager
         }
     }
 
+    public static function getUserId():int 
+    {
+        if (isset($_SESSION['user'])) {
+            return $_SESSION['user']->getId();
+        } else {
+            return 0;
+        }
+    }
+
     public static function getFlashMessages()
     {
         return $_SESSION['flashMessages'] ?? [];
@@ -56,5 +65,10 @@ class SessionManager
     public static function cleanFlashMessages()
     {
         unset($_SESSION['flashMessages']);
+    }
+
+    public static function isCurrentUserThePostOwner($post):bool
+    {
+        return $post->getUser()->getId() === SessionManager::getUserId();
     }
 }

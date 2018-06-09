@@ -17,9 +17,25 @@ Should be set on the root {
 
 }
 
+body {
+    display: block;
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 40px;
+}
+
 nav.navbar {
     border-radius: 0;
     margin-bottom: 70px;
+}
+
+textarea {
+    overflow: auto;
+    resize: none;
+}
+
+p {
+    margin: 0;
 }
 
 @media(max-width:992px) {

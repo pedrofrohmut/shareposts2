@@ -1,14 +1,17 @@
 <?php 
+require_once APP_ROOT . "/services/Service.php";
 require_once APP_ROOT . "/services/ServiceResponse.php";
+require_once APP_ROOT . "/services/PostService.php";
 require_once APP_ROOT . "/helpers/ConnectionFactory.php";
 require_once APP_ROOT . "/daos/UserDao.php";
 require_once APP_ROOT . "/models/User.php";
 
-class UserService
-{
-    public function __construct()
-    {
 
+class UserService extends Service
+{
+    public function __construct(array $params = [])
+    {
+        parent::__construct($params);
     }
 
     public function registerOnGet()
@@ -163,8 +166,9 @@ class UserService
 
         SessionManager::setUser($user);
 
-        $viewPath = "post/index";
-        return new ServiceResponse($viewPath, []);
+        // FlashMessage::setMessage("Log in done with success."); #DEBUG
+
+        return ( new PostService() )->indexOnGet();
     }
 
     public function logoutOnGet()
