@@ -90,8 +90,6 @@ class PostService extends Service
         $post = ( new PostDao( ConnectionFactory::getConnection() ) )->findPostById($this->params["postId"]);
 
         $data = [
-            // "title" => $post->getTitle(),
-            // "body" => $post->getBody()
             "post" => $post
         ];
 

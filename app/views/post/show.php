@@ -12,7 +12,6 @@
     <div class="card-body">
         <h4 class="card-title"><?=$post->getTitle()?></h4>
 
-        <!-- TODO: inner join to get user_name -->
         <p class="text-secondary font-weight-light">
             Writen by <?=$post->getUser()->getName()?> on <?=$post->getCreatedAt()?>
         </p>
