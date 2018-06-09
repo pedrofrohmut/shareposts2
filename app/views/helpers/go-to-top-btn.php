@@ -16,7 +16,7 @@ button#scrollTopBtn:hover {
 }
 </style>
 
-<!-- 
+<!-- OTHER FONT AWESOME SYMBOLS TO USE
 fa fa-angle-double-up
 fa fa-angle-up
 fa fa-chevron-up
@@ -39,12 +39,14 @@ const handleScroll = function(e) {
 
 const goToTopClick = function(e) {
     scrollTopBtn.style.display = "none";
+    // SCROLL UP SPEED HERE: interval in milliseconds
     let interval = setInterval(frame, 5);
     function frame() {
         if (document.documentElement.scrollTop === 0) {
             clearInterval(interval);
             document.documentElement.scrollTop = 0;
         } else {
+            // SCROLL UP SPEED HERE: number of pixel for call
             document.documentElement.scrollTop = document.documentElement.scrollTop - 20;
         }
     }

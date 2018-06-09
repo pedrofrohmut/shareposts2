@@ -24,22 +24,6 @@ class UserController extends Controller
     {
         // TODO: change this to standart
         die(" - TODO: implement this method.");
-
-        // if (!isset($_SESSION['user'])) {
-        //     $this->login();
-        //     return;
-        // } 
-
-        // $this->loadView("page/index", []); #TEMP
-        // $this->profile($_SESSION['user']->id);
-
-        // switch ($_SERVER['REQUEST_METHOD'])
-        // {
-        //     case 'GET':
-        //         break;
-        //     default:
-        //         $this->methodNotAllowed();
-        // }
     }
 
     /**
@@ -108,43 +92,6 @@ class UserController extends Controller
     {
         // TODO: change this to standart
         die(" - TODO: implement this method.");
-
-        // if ($id === 0) {
-        //     // TODO: Show Flash Error Message
-        //     $this->index();
-        //     return;
-        // }
-
-        // $data = [];
-
-        // $this->loadView("user/profile", $data);
-
-        // switch ($_SERVER['REQUEST_METHOD'])
-        // {
-        //     case 'GET':
-        //         break;
-        //     default:
-        //         $this->methodNotAllowed();
-        // }
-    }
-
-    /**
-     * Test Method. Should be excluded before prod version
-     */
-    public function test()
-    {
-        // switch( $_SERVER['REQUEST_METHOD'] )
-        // {
-        //     case 'GET' : 
-        //         echo "GET was call in test"; 
-        //         break;
-        //     case 'POST' : 
-        //         echo "POST was call in test"; 
-        //         break;
-        //     default: 
-        //         echo "Default was called in test";
-        // }
-        // $this->methodNotAllowed();
     }
 
     public function logout()

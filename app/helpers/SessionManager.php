@@ -34,22 +34,22 @@ class SessionManager
         session_destroy();
     }
 
-    public static function isUserLoggedIn():bool
-    {
-        if (isset($_SESSION['user'])) {
-            return true;
-        } else {
+    public static function isUserLoggedIn(User $user = null):bool
+    {        
+        if (!isset($_SESSION["user"])) {
             return false;
         }
+
+        if ($user === null) {
+            return true;
+        }
+
+        return $user->getId() === $_SESSION["user"]->getId();
     }
 
     public static function getUserId():int 
     {
-        if (isset($_SESSION['user'])) {
-            return $_SESSION['user']->getId();
-        } else {
-            return 0;
-        }
+        return $_SESSION["user"]->getId() ?? 0;
     }
 
     public static function getFlashMessages()

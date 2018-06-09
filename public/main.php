@@ -14,8 +14,7 @@
  */
 require_once "../app/Bootstrap.php";
 
-// Build & start session
 SessionManager::start();
 
-// loads the framework's core & Content of the page
+// loads the framework's core
 new RequestDispatcher();

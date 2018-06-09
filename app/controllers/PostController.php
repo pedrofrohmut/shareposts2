@@ -78,4 +78,49 @@ class PostController extends Controller
                 $this->methodNotAllowed();
         }
     }
+
+    public function edit(int $id)
+    {
+        switch ($_SERVER["REQUEST_METHOD"])
+        {
+            case "GET":
+                if (SessionManager::isUserLoggedIn()) {
+                    $serviceResponse = ( new PostService(["postId" => $id]) )->editOnGet();
+                } else {
+                    FlashMessage::setUserNotLoggedInMessage();
+                    $serviceResponse = ( new PageService() )->indexOnGet();
+                }
+                $this->loadView($serviceResponse->getViewPath(), $serviceResponse->getData());
+                break;
+            case "POST":
+                if (SessionManager::isUserLoggedIn()) {
+                    $serviceResponse = ( new PostService(["postId" => $id]) )->editOnPost();
+                } else {
+                    FlashMessage::setUserNotLoggedInMessage();
+                    $serviceResponse = ( new PageService() )->indexOnGet();
+                }
+                $this->loadView($serviceResponse->getViewPath(), $serviceResponse->getData());
+                break;
+            default:
+                $this->methodNotAllowed();
+        }
+    }
+
+    public function delete(int $id)
+    {
+        switch ($_SERVER["REQUEST_METHOD"])
+        {
+            case "POST":
+                if (SessionManager::isUserLoggedIn()) {
+                    $serviceResponse = ( new PostService(["postId" => $id]) )->deleteOnPost();
+                } else {
+                    FlashMessage::setUserNotLoggedInMessage();
+                    $serviceResponse = ( new PageService() )->indexOnGet();
+                }
+                $this->loadView($serviceResponse->getViewPath(), $serviceResponse->getData());
+                break;
+            default:
+                $this->methodNotAllowed();
+        }
+    }
 }

@@ -24,7 +24,9 @@ class PostDao
             WHERE 
                 p.user_id = u.id
             ORDER BY 
-                created_at DESC");
+                created_at DESC"
+        );
+
         $stm->execute();
         $resultSet = $stm->fetchAll();
 
@@ -77,7 +79,9 @@ class PostDao
             FROM 
                 posts AS p, users AS u 
             WHERE 
-                p.user_id = u.id AND p.id = :id");
+                p.user_id = u.id AND p.id = :id"
+        );
+
         $stm->bindValue(":id", $id, PDO::PARAM_INT);
         $stm->execute();
         $fetchedPost = $stm->fetch();
@@ -95,6 +99,40 @@ class PostDao
             $post->setCreatedAt($fetchedPost->created_at);
 
             return $post;
+        } else {
+            return false;
+        }
+    }
+
+    public function update(Post $post):bool
+    {
+        $stm = $this->conn->prepare(
+        "   UPDATE 
+                posts 
+            SET
+                title = :title, body = :body 
+            WHERE
+                id = :id"
+        );
+
+        $stm->bindValue(":title", $post->getTitle(), PDO::PARAM_STR);
+        $stm->bindValue(":body",  $post->getBody(),  PDO::PARAM_STR);
+        $stm->bindValue(":id",    $post->getId(),    PDO::PARAM_INT);
+
+        if ($stm->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function delete(int $id):bool 
+    {
+        $stm = $this->conn->prepare("DELETE FROM posts WHERE id = :id");
+        $stm->bindValue(":id", $id, PDO::PARAM_INT);
+
+        if ($stm->execute()) {
+            return true;
         } else {
             return false;
         }

@@ -28,4 +28,9 @@ class FlashMessage
     {
         FlashMessage::setMessage("You are already logged in and were redirect.", "info");
     }
+
+    public static function setCurrentUserNotThePostOwnerMessage()
+    {
+        FlashMessage::setMessage("The current user logged in is NOT the owner of this post and cannot access this functionality.", "warning");
+    }
 }
