@@ -166,8 +166,6 @@ class UserService extends Service
 
         SessionManager::setUser($user);
 
-        // FlashMessage::setMessage("Log in done with success."); #DEBUG
-
         return ( new PostService() )->indexOnGet();
     }
 
